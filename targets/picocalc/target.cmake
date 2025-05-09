@@ -2,6 +2,9 @@
 # building variables
 ######################################
 
+# is this picocalc?
+set(PICOCALC 1)
+
 # debug build?
 set(DEBUG 1)
 
@@ -48,13 +51,13 @@ if(NOT MODULES)
     rp2
     rtc
     path
-    picocalc_lcd
     flash
     fs
     vfs_lfs
     vfs_fat
     sdcard
     wdt
+    lcd
     startup)
 endif()
 
@@ -88,6 +91,9 @@ set(SOURCES
   ${TARGET_SRC_DIR}/rtc.c
   ${TARGET_SRC_DIR}/wdt.c
   ${TARGET_SRC_DIR}/main.c
+  ${TARGET_SRC_DIR}/lcd.c
+  ${TARGET_SRC_DIR}/keyboard.c
+  ${TARGET_SRC_DIR}/audio.c
   ${BOARD_DIR}/board.c)
 
 include_directories(${TARGET_INC_DIR} ${BOARD_DIR})
