@@ -116,12 +116,20 @@ void km_system_init() {
   km_uart_init();
   km_rtc_init();
   km_flash_init();
+
+  pc_lcd_init();
+  pc_keyboard_init();
+  pc_audio_init();
 }
 
 void km_system_cleanup() {
 #ifdef PICO_CYW43
   km_cyw43_deinit();
 #endif
+  pc_audio_cleanup();
+  pc_keyboard_cleanup();
+  pc_lcd_cleanup();
+
   km_adc_cleanup();
   km_pwm_cleanup();
   km_i2c_cleanup();
