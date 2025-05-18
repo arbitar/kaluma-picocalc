@@ -21,3 +21,5 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
       build-essential gdb-multiarch \
       g++ gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib \
       openocd usbutils
+
+RUN cd /workspaces/kaluma-project && npm install
