@@ -14,11 +14,11 @@
         "kind": "build",
         "isDefault": true
       },
-      "presentation": {
-        "reveal": "always",
-        "focus": true,
-        "panel": "new"
-      },
+      // "presentation": {
+      //   "reveal": "always",
+      //   "focus": true,
+      //   "panel": "new"
+      // },
       "problemMatcher": []
     },
     {

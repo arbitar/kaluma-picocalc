@@ -2,29 +2,56 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Pico Debug",
+      "name": "Pico Debug (Container)",
       "cwd": "${workspaceRoot}",
-      "executable": "${workspaceRoot}/build/kaluma-rp2-pico-w-1.1.0.elf",
+      "executable": "${workspaceRoot}/build/kaluma-picocalc-pico-1.2.1.elf",
       "request": "launch",
       "type": "cortex-debug",
       "servertype": "openocd",
-      // This may need to be "arm-none-eabi-gdb" for some previous builds
+      "serverpath": "/workspaces/kaluma-project/.devcontainer/sudo_openocd.sh",
       "gdbPath": "gdb-multiarch",
       "device": "RP2040",
-      //"loadFiles": [],
       "configFiles": [
         "interface/cmsis-dap.cfg",
         "target/rp2040.cfg"
       ],
-      "svdFile": "${workspaceRoot}lib/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
+      "openOCDLaunchCommands": [
+        "adapter speed 5000",
+      ],
+      "svdFile": "${workspaceRoot}/lib/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
       "runToEntryPoint": "main",
-      "showDevDebugOutput": "raw",
+      "showDevDebugOutput": "parsed",
       "preLaunchTask": "${defaultBuildTask}",
-      // Work around for stopping at main on restart
       "postRestartCommands": [
         "break main",
         "continue"
       ]
     }
+    // ,
+    // {
+    //   "name": "Pico Debug",
+    //   "cwd": "${workspaceRoot}",
+    //   "executable": "${workspaceRoot}/build/kaluma-rp2-pico-w-1.1.0.elf",
+    //   "request": "launch",
+    //   "type": "cortex-debug",
+    //   "servertype": "openocd",
+    //   // This may need to be "arm-none-eabi-gdb" for some previous builds
+    //   "gdbPath": "gdb-multiarch",
+    //   "device": "RP2040",
+    //   //"loadFiles": [],
+    //   "configFiles": [
+    //     "interface/cmsis-dap.cfg",
+    //     "target/rp2040.cfg"
+    //   ],
+    //   "svdFile": "${workspaceRoot}lib/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
+    //   "runToEntryPoint": "main",
+    //   "showDevDebugOutput": "raw",
+    //   "preLaunchTask": "${defaultBuildTask}",
+    //   // Work around for stopping at main on restart
+    //   "postRestartCommands": [
+    //     "break main",
+    //     "continue"
+    //   ]
+    // }
   ]
 }
